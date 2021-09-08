@@ -6,16 +6,31 @@ alias zshrc='source $HOME/.zshrc'
 export EDITOR=/usr/bin/nano
 
 # --- 移動系 ---
-alias dev='cd $HOME/Develop/'
+function dev() {
+  if [ -z $1]; then
+    cd $HOME/develop/
+  else
+    cd $HOME/develop/$1
+  fi
+}
 
 # --- gitコマンド関連 ---
 alias gcommit='python3 $HOME/develop/commit_formatter/commit_formatter.py'
+alias gdrop='git stash drop stash@\{0\}'
+alias prune='git remote prune origin'
 
 # よく見たらzshのプラグインであるじゃねーか！
 # というわけでzshのプラグインに加え自分がめっちゃ使うやつを追加する
 function gcbf(){
   command git checkout -b feature/$1
 }
+
+function gcbr(){
+  command git checkout -b feature/add-recently-posts-$1
+}
+
+# --- その他ショートハンド ---
+alias sbook="yarn storybook"
 
 # --- anyenv ---
 eval "$(anyenv init -)"
