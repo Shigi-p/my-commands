@@ -17,7 +17,8 @@ function dev() {
 # --- gitコマンド関連 ---
 alias gcommit='python3 $HOME/develop/commit_formatter/commit_formatter.py'
 alias gdrop='git stash drop stash@\{0\}'
-alias prune='git remote prune origin'
+alias gprune='git remote prune origin'
+alias greset='git reset --soft HEAD~'
 
 # よく見たらzshのプラグインであるじゃねーか！
 # というわけでzshのプラグインに加え自分がめっちゃ使うやつを追加する
@@ -30,7 +31,14 @@ function gcbr(){
 }
 
 # --- その他ショートハンド ---
-alias sbook="yarn storybook"
+alias y="yarn"
+alias ystart="y start"
+alias yadd="y add"
+alias yrm="y remove"
+alias ysb="y storybook"
+alias ytest="y test"
+alias ylist="y list --depth=0"
+alias ylistg="y global list --depth=0"
 
 # --- anyenv ---
 eval "$(anyenv init -)"
