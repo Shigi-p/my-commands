@@ -1,0 +1,35 @@
+if status is-interactive
+  set -x PATH $HOME/.anyenv/bin $PATH
+
+  # nodenv
+  set -gx NODENV_ROOT "/Users/toshiki_shigihara/.anyenv/envs/nodenv"
+  set -gx PATH $PATH "/Users/toshiki_shigihara/.anyenv/envs/nodenv/bin"
+  set -gx PATH '/Users/toshiki_shigihara/.anyenv/envs/nodenv/shims' $PATH
+
+  # pyenv
+  set -gx PYENV_ROOT "/Users/toshiki_shigihara/.anyenv/envs/pyenv"
+  set -gx PATH $PATH "/Users/toshiki_shigihara/.anyenv/envs/pyenv/bin"
+  set -gx  PATH "/Users/toshiki_shigihara/.anyenv/envs/pyenv/shims" $PATH
+
+  abbr -a gcommit 'python3 $HOME/develop/commit_formatter/commit_formatter.py'
+  abbr -a gdrop 'git stash drop stash@\{0\}'
+  abbr -a gprune 'git remote prune origin'
+  abbr -a greset 'git reset --soft HEAD~'
+  abbr -a gcm 'git checkout (__git.default_branch)'
+  abbr -a gcd 'git checkout develop'
+  abbr -a ggpush 'ggp'
+  abbr -a ggpull 'ggl'
+
+  abbr -a y "yarn"
+  abbr -a ystart "yarn start"
+  abbr -a yadd "yarn add"
+  abbr -a yrm "yarn remove"
+  abbr -a ysb "yarn storybook"
+  abbr -a ytest "yarn test"
+  abbr -a ylist "yarn list --depth=0"
+  abbr -a ylistg "yarn global list --depth=0"
+
+
+
+  abbr -a fishrc 'source ~/.config/fish/config.fish'
+end
