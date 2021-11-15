@@ -40,6 +40,9 @@ alias ytest="y test"
 alias ylist="y list --depth=0"
 alias ylistg="y global list --depth=0"
 
+alias nstart="npm start"
+alias nst="npm start"
+
 # --- anyenv ---
 eval "$(anyenv init -)"
 
@@ -52,7 +55,12 @@ eval "$(nodenv init -)"
 # export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+# --- goenv ---
+eval "$(goenv init -)"
+
 # ありがとうきむえもん
 if [ -f $HOME/develop/my-commands/.localrc ]; then
   source $HOME/develop/my-commands/.localrc
 fi
+
+alias ls='/usr/local/bin/exa'
