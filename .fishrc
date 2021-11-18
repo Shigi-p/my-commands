@@ -2,14 +2,16 @@ if status is-interactive
   set -x PATH $HOME/.anyenv/bin $PATH
 
   # nodenv
-  set -gx NODENV_ROOT '$HOME/.anyenv/envs/nodenv'
-  set -gx PATH $PATH '$HOME/.anyenv/envs/nodenv/bin'
-  set -gx PATH '$HOME/.anyenv/envs/nodenv/shims' $PATH
+  set -x NODENV_ROOT $HOME/.anyenv/envs/nodenv
+  set -x PATH $HOME/.anyenv/envs/nodenv/bin $PATH
+  set -gx PATH $NODENV_ROOT/shims $PATH
 
   # pyenv
   set -gx PYENV_ROOT '$HOME/.anyenv/envs/pyenv'
   set -gx PATH $PATH '$HOME/.anyenv/envs/pyenv/bin'
-  set -gx  PATH '$HOME/.anyenv/envs/pyenv/shims' $PATH
+  # export PATH='$HOME/.anyenv/envs/pyenv/shims:${PATH}'
+
+  abbr -a commands 'nano $HOME/.config/fish/config.fish'
 
   abbr -a gcommit 'python3 $HOME/develop/commit_formatter/commit_formatter.py'
   abbr -a gdrop 'git stash drop stash@\{0\}'
@@ -20,6 +22,10 @@ if status is-interactive
   abbr -a ggpush 'ggp'
   abbr -a ggpull 'ggl'
 
+  function gcbf
+    git checkout -b feature/$argv
+  end
+
   abbr -a y 'yarn'
   abbr -a ystart 'yarn start'
   abbr -a yadd 'yarn add'
@@ -29,7 +35,23 @@ if status is-interactive
   abbr -a ylist 'yarn list --depth=0'
   abbr -a ylistg 'yarn global list --depth=0'
 
+  abbr -a n 'npm'
+  abbr -a nst 'npm start'
+  abbr -a nist 'npm install'
+  abbr -a nbld 'npm build'
 
+  abbr -a d 'docker'
+  abbr -a dc 'docker-compose'
+  abbr -a dcup 'docker-compose up'
+  abbr -a dcupd 'docker-compose up -d'
+  abbr -a dcdown 'docker-compose down'
+
+  abbr -a python 'python3'
+  abbr -a pip 'pip3'
+
+  # カレントディレクトリより1階層下を見るという意味でtree1
+  abbr -a tree1 'exa -T -L=2'
+  abbr -a tree2 'exa -T -L=3'
 
   abbr -a fishrc 'source ~/.config/fish/config.fish'
 end
