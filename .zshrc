@@ -6,13 +6,6 @@ alias zshrc='source $HOME/.zshrc'
 export EDITOR=/usr/bin/nano
 
 # --- 移動系 ---
-function dev() {
-  if [ -z $1]; then
-    cd $HOME/develop/
-  else
-    cd $HOME/develop/$1
-  fi
-}
 
 # --- gitコマンド関連 ---
 alias gcommit='python3 $HOME/develop/commit_formatter/commit_formatter.py'
@@ -42,21 +35,6 @@ alias ylistg="y global list --depth=0"
 
 alias nstart="npm start"
 alias nst="npm start"
-
-# --- anyenv ---
-eval "$(anyenv init -)"
-
-# --- nodenv ---
-# export PATH="$HOME/.nodenv/bin:$PATH"
-eval "$(nodenv init -)"
-
-# --- pyenv ---
-# export PYENV_ROOT="$HOME/.pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-# --- goenv ---
-eval "$(goenv init -)"
 
 # ありがとうきむえもん
 if [ -f $HOME/develop/my-commands/.localrc ]; then

@@ -1,19 +1,22 @@
 if status is-interactive
-  set -x PATH $HOME/.anyenv/bin $PATH
+  # rust
+  set -gx PATH "$HOME/.cargo/bin" $PATH;
+  set -gx CARGO_HOME "$HOME/.cargo"
 
-  # nodenv
-  set -x NODENV_ROOT $HOME/.anyenv/envs/nodenv
-  set -x PATH $HOME/.anyenv/envs/nodenv/bin $PATH
-  set -gx PATH $NODENV_ROOT/shims $PATH
+  abbr -a w 'wasm-pack'
+  abbr -a ab 'wasm-pack build'
 
-  # pyenv
-  set -gx PYENV_ROOT '$HOME/.anyenv/envs/pyenv'
-  set -gx PATH $PATH '$HOME/.anyenv/envs/pyenv/bin'
-  # export PATH='$HOME/.anyenv/envs/pyenv/shims:${PATH}'
+  # editor
+  set -x EDITOR '/usr/bin/nano'
+
+  # volta
+  set -x VOLTA_HOME $HOME/.volta
+  set -x PATH $VOLTA_HOME/bin $PATH
 
   abbr -a commands 'nano $HOME/.config/fish/config.fish'
 
-  abbr -a gcommit 'python3 $HOME/develop/commit_formatter/commit_formatter.py'
+  abbr -a gcommit 'sh $HOME/develop/commit_formatter/commit_formatter.sh'
+  abbr -a gc 'sh $HOME/develop/commit_formatter/commit_formatter.sh'
   abbr -a gdrop 'git stash drop stash@\{0\}'
   abbr -a gprune 'git remote prune origin'
   abbr -a greset 'git reset --soft HEAD~'
@@ -21,6 +24,10 @@ if status is-interactive
   abbr -a gcd 'git checkout develop'
   abbr -a ggpush 'ggp'
   abbr -a ggpull 'ggl'
+  abbr -a ggpulld 'git pull origin develop'
+  abbr -a ggpullm 'git pull origin main'
+  abbr -a gbdall 'git branch | grep feature | xargs git branch -d | git remote prune origin'
+  abbr -a gbdfall 'git branch | grep feature | xargs git branch -D | git remote prune origin'
 
   function gcbf
     git checkout -b feature/$argv
@@ -28,12 +35,14 @@ if status is-interactive
 
   abbr -a y 'yarn'
   abbr -a ystart 'yarn start'
+  abbr -a yst 'yarn start'
   abbr -a yadd 'yarn add'
   abbr -a yrm 'yarn remove'
   abbr -a ysb 'yarn storybook'
   abbr -a ytest 'yarn test'
-  abbr -a ylist 'yarn list --depth=0'
-  abbr -a ylistg 'yarn global list --depth=0'
+  abbr -a yls 'yarn list --depth=0'
+  abbr -a ylsg 'yarn global list --depth=0'
+  abbr -a ylt 'yarn lint'
 
   abbr -a n 'npm'
   abbr -a nst 'npm start'
@@ -48,6 +57,8 @@ if status is-interactive
 
   abbr -a python 'python3'
   abbr -a pip 'pip3'
+
+  abbr -a ls 'exa'
 
   # カレントディレクトリより1階層下を見るという意味でtree1
   abbr -a tree1 'exa -T -L=2'
